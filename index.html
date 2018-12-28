@@ -47,7 +47,10 @@
                 Content Image
               </h4>
               <p class="card-text">This image is the one that will be slowly transfered to aquire the style of the style image below. Therefore choose an image that you want to have a new style.</p>
-          <a class="btn btn-primary" href="#">Change image</a>
+		<div class="input-group input-group-xs">
+            		<label for="file">Choose another content image by yourself</label>
+            		<input type="file" id="contentimagebtn" imagetype="content" onchange="handleFileSelect(event)" aria-describedby="chooseFileDescription"/>
+		</div>
         </div>
       </div>
       <!-- /.row -->
@@ -66,24 +69,36 @@
                 Style Image
               </h4>
               <p class="card-text">The style of this image will be used to slowly transform the content image to this style.</p>
-          <a class="btn btn-primary" href="#">Change image</a>
+		<div class="input-group input-group-xs">
+            		<label for="file">Choose a style image by yourself</label>
+       			<input type="file" id="styleimagebtn"  imagetype="style" onchange="handleFileSelect(event)" aria-describedby="chooseFileDescription"/>
+		</div>
+
         </div>
       </div>
       <!-- /.row -->
 
       <hr>
 
-      <div class="row">
+      <div class="row">	
           <div class="col-md-7">
             <canvas id="canvas" style="width:330px;" ></canvas>
           </div>
           <div class="col-md-5">
-              <h4 class="card-title">
+             <div class="row">
+		 <h4 class="card-title">
                   Result
                 </h4>
                 <p class="card-text">The result of transforming the style of the content image to the style of the style image. Transforming takes time depending on your available hardware.</p>
-            <a class="btn btn-primary" id="startTransforming" >Start transforming</a>
-          </div>
+            	<a class="btn btn-primary disabled" id="startTransforming" >Please wait, downloading Neural Network...</a>
+	      </div>
+        	<div class="row"> 
+			<input type="number" id="tfrate" name="transformation rate" min="0.001" value="1"><span>  transformation rate</span>
+			<input type="number" id="steps" name="transformation steps" min="1" value="100"><span>  transformation steps</span>
+			<input type="number" id="imagedim" name="image dimensions" min="16" value="64"><span>  image dimensions: x and y values</span>
+			<input type="number" id="styleweight"  name="style weight" step="0.1" min="0.0001" value="0.1"><span>  style weight</span>
+		</div>
+	 </div>
         </div>
    
 
